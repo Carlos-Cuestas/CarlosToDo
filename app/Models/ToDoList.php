@@ -9,6 +9,8 @@ class ToDoList extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function toDos(){
         return $this->hasMany(ToDo::class);
     }
