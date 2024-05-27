@@ -10,4 +10,8 @@ class ToDoStep extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    public function toDo(){
+        return $this->belongsTo(ToDo::class);
+    }
 }

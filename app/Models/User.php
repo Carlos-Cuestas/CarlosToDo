@@ -44,4 +44,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function toDoLists(){
+        return $this->hasMany(ToDoList::class);
+    }
+
+    public function guestLists(){
+        return $this->belongsToMany(ToDoList::class);
+    }
 }
