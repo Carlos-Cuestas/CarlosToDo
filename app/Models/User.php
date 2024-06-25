@@ -52,4 +52,18 @@ class User extends Authenticatable
     public function guestLists(){
         return $this->belongsToMany(ToDoList::class);
     }
+
+    protected static function booted(): void
+    {
+        static::created(function (User $user){
+            $user->toDoLists()->create([
+                'name' => 'Tareas',
+                'editable' => false,
+            ])->toDos()->create([
+                'name' => 'otroasfa',
+            ]);
+
+        });
+
+    }
 }

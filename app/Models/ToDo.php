@@ -9,6 +9,8 @@ class ToDo extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function list(){
         return $this->belongsTo(ToDoList::class);
     }
@@ -24,4 +26,5 @@ class ToDo extends Model
     public function files(){
         return $this->hasMany(ToDoFile::class);
     }
+
 }

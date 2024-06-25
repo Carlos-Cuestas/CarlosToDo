@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('to_dos', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->string("description");
-            $table->boolean("important");
-            $table->datetime("remind_date");
-            $table->datetime("due_date");
-            $table->boolean("completed");
-            $table->foreignIdFor(User::class, "assigned_id")->constrained();
+            $table->string("description")->nullable();
+            $table->boolean("important")->default(false);
+            $table->datetime("remind_date")->nullable();
+            $table->datetime("due_date")->nullable();
+            $table->boolean("completed")->default(false);
+            $table->foreignIdFor(User::class, "assigned_id")->nullable();
             $table->foreignIdFor(ToDoList::class)->constrained();
             $table->timestamps();
         });

@@ -11,7 +11,7 @@ class ToDoController extends Controller
 {
     public function index(){
         return Inertia::render('Index',[
-            'lists' => Auth::user()->toDoLists,
+            'lists' => Auth::user()->toDoLists
         ]);
     }
 
@@ -29,6 +29,12 @@ class ToDoController extends Controller
             'editable' => true,
         ]);
 
-        return redirect()->route('dashboard');
+        #return redirect()->route('dashboard');
+    }
+
+    public function seelist(Request $request){
+        return Inertia::render('Index',[
+            'todos' => Auth::user()->toDoLists[$request->id]->toDos
+        ]);
     }
 }

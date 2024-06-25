@@ -42,10 +42,6 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $user->toDoLists()->create([
-            'name' => 'Tareas',
-            'editable' => false,
-        ]);
 
         event(new Registered($user));
 
